@@ -1,6 +1,10 @@
 #include <iostream>
 #include <exception>
 
+int** matrix_input(size_t m, size_t n);
+int** matrix_transpose(int** matrix, size_t m, size_t n);
+int matrix_output(int** trans_matrix, size_t n, size_t m);
+
 int** matrix_input(size_t m, size_t n){
     int** matrix = new int*[m];
     for (size_t i = 0; i < m; i++){
@@ -44,13 +48,13 @@ int matrix_output(int** trans_matrix, size_t n, size_t m){
 }
 
 int main(){
-    int m = 0, n = 0;
-    std::cin >> m >> n;
-    if (std::cin.fail() || (m <= 0) || (n <= 0)){
+    int m_i = 0, n_i = 0;
+    std::cin >> m_i >> n_i;
+    if (std::cin.fail() || (m_i <= 0) || (n_i <= 0)){
         std::cerr << "Код ошибки 1";
         return 1;
     }
-    size_t m = m, n = n;
+    size_t m = m_i, n = n_i;
     try{
         int** matrix = matrix_input(m, n);
         int** trans_matrix = matrix_transpose(matrix, m, n);
