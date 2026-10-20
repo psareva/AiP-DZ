@@ -128,7 +128,12 @@ int ** concat_rows(const int * const * lhs, size_t m1, size_t n1, const int * co
     }
     for (size_t i = 0; i < min_m; i++) {
         for (size_t j = 0; j < (n1+n2); j++) {
-            new_matrix[i][j] = lhs[i][j]+rhs[i][j];
+            if (j < n1){
+                new_matrix[i][j] = lhs[i][j];
+            }
+            else{
+                new_matrix[i][j] = rhs[i][j];
+            }
             if (std::cin.fail()) {
                 for (size_t k; k < m; k++) {
                     delete[] new_matrix[k];
